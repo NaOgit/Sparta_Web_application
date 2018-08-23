@@ -12,34 +12,35 @@ class PostsController < Sinatra::Base
       id:0,
       title: 'Widdershins',
       speech: 'adverb',
+      origin: "Early 16th century: from Middle Low German weddersins, from Middle High German widersinnes, from wider ‘against’ + sin ‘direction’; the second element was associated with Scots sin ‘sun’.",
       definition: "In a direction contrary to the sun's course, considered as unlucky; anticlockwise."
     },
     {
       id:1,
       title: 'Accouchement',
-      origin: "Late 18th century: French, from accoucher ‘act as midwife’, from a- (from Latin ad ‘to, at’) + coucher ‘put to bed’.",
       speech: 'noun',
+      origin: "Late 18th century: French, from accoucher ‘act as midwife’, from a- (from Latin ad ‘to, at’) + coucher ‘put to bed’.",
       definition: "The action of giving birth to a baby."
     },
     {
       id:2,
       title: 'Bibliopole',
-      origin: "Late 18th century: via Latin from Greek bibliopōlēs, from biblion ‘book’ + pōlēs ‘seller’.",
       speech: 'noun',
+      origin: "Late 18th century: via Latin from Greek bibliopōlēs, from biblion ‘book’ + pōlēs ‘seller’.",
       definition: "A person who buys and sells books, especially rare ones."
     },
     {
       id:3,
       title: 'Carl',
-      origin: "Old English (denoting a peasant or villein): from Old Norse karl ‘man, freeman’, of Germanic origin; related to churl.",
       speech: 'noun',
+      origin: "Old English (denoting a peasant or villein): from Old Norse karl ‘man, freeman’, of Germanic origin; related to churl.",
       definition: "A peasant or man of low birth."
     },
     {
       id:4,
       title: 'Dandiprat',
-      origin: "Early 16th century (denoting a coin worth three halfpence): of unknown origin.",
       speech: 'noun',
+      origin: "Early 16th century (denoting a coin worth three halfpence): of unknown origin.",
       definition: "A young or insignificant person."
     }
   ]
@@ -56,8 +57,8 @@ class PostsController < Sinatra::Base
     @post = {
       id: "",
       title: "",
-      origin: "",
       speech: "",
+      origin: "",
       definition: ""
     }
     erb :'posts/new'
@@ -68,8 +69,8 @@ class PostsController < Sinatra::Base
     new_post = {
       id: $posts.length,
       title: params[:title],
-      origin: params[:origin],
       speech: params[:speech],
+      origin: params[:origin],
       definition: params[:definition]
     }
 
@@ -98,8 +99,8 @@ class PostsController < Sinatra::Base
     post = $posts[id]
 
     post[:title] = params[:title]
-    post[:origin] = params[:origin]
     post[:speech] = params[:speech]
+    post[:origin] = params[:origin]
     post[:definition] = params[:definition]
 
     redirect '/words'

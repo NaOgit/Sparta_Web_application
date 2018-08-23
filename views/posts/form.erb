@@ -4,12 +4,12 @@
     <input type="text" name="title" placeholder="Enter a title" value="<%= @post[:title] %>">
   </div>
   <div>
-    <label>Origin</label>
-    <input name="origin" placeholder="Word origin" value="<%= @post[:origin] %>">
-  </div>
-  <div>
     <label>Speech</label>
     <input name="speech" placeholder="Parts of speech" value="<%= @post[:speech] %>">
+  </div>
+  <div>
+    <label>Origin</label>
+    <textarea name="origin" placeholder="Word origin"><%= @post[:origin] %></textarea
   </div>
   <div>
     <label>Definition</label>

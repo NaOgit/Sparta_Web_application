@@ -4,8 +4,8 @@
 <% @post.each do |post| %>
 <div>
   <h3><a href="/words/<%= post[:id] %>"><%= post[:title] %></a></h3>
-  <h4><%= post[:origin] %></h4>
   <h4><%= post[:speech] %></h4>
+  <h4><%= post[:origin] %></h4>
   <p><%= post[:definition] %></p>
 </div>
 <% end %>
