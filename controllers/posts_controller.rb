@@ -10,93 +10,106 @@ class PostsController < Sinatra::Base
 
   $posts = [{
       id:0,
-      title: 'Post 0',
-      post_body: 'This is the initial post'
+      title: 'Widdershins',
+      speech: 'adverb',
+      definition: "In a direction contrary to the sun's course, considered as unlucky; anticlockwise."
     },
     {
       id:1,
-      title: 'Post 1',
-      post_body: 'This is the first post'
+      title: 'Accouchement',
+      origin: "Late 18th century: French, from accoucher ‘act as midwife’, from a- (from Latin ad ‘to, at’) + coucher ‘put to bed’.",
+      speech: 'noun',
+      definition: "The action of giving birth to a baby."
     },
     {
       id:2,
-      title: 'Post 2',
-      post_body: 'This is the second post'
+      title: 'Bibliopole',
+      origin: "Late 18th century: via Latin from Greek bibliopōlēs, from biblion ‘book’ + pōlēs ‘seller’.",
+      speech: 'noun',
+      definition: "A person who buys and sells books, especially rare ones."
     },
     {
-      id:2,
-      title: 'Post 3',
-      post_body: 'This is the third post'
+      id:3,
+      title: 'Carl',
+      origin: "Old English (denoting a peasant or villein): from Old Norse karl ‘man, freeman’, of Germanic origin; related to churl.",
+      speech: 'noun',
+      definition: "A peasant or man of low birth."
+    },
+    {
+      id:4,
+      title: 'Dandiprat',
+      origin: "Early 16th century (denoting a coin worth three halfpence): of unknown origin.",
+      speech: 'noun',
+      definition: "A young or insignificant person."
     }
   ]
 
-  # Separation concerns
-  get "/" do
+  get "/words" do
     @title = "Blog Posts"
     @post = $posts
-    # erb => go look for the layout field first
-    # Apply the template
     erb :'posts/index'
-    # "test"
   end
 
-  get "/new" do
+  get "/words/new" do
     @title = "New post"
 
     @post = {
       id: "",
       title: "",
-      post_body: ""
+      origin: "",
+      speech: "",
+      definition: ""
     }
     erb :'posts/new'
   end
 
-  post "/" do
+  post "/words" do
     puts params
-    # Assign new posts
     new_post = {
       id: $posts.length,
       title: params[:title],
-      post_body: params[:post_body]
+      origin: params[:origin],
+      speech: params[:speech],
+      definition: params[:definition]
     }
 
     $posts.push(new_post)
 
-    redirect "/"
-    "New added"
+    redirect "/words"
+
   end
 
-  get "/:id" do
+  get "/words/:id" do
     id = params[:id].to_i
     @post = $posts[id]
-    # erb => go look for the layout field first
-    # Apply the template
     erb :'posts/show'
   end
 
-  get "/:id/edit" do
+  get "/words/:id/edit" do
     id = params[:id].to_i
     @post = $posts[id]
     @title = "Edit Post"
     erb :'posts/edit'
   end
 
-  put "/:id" do
+  put "/words/:id" do
     id = params[:id].to_i
 
     post = $posts[id]
 
     post[:title] = params[:title]
-    post[:post_body] = params[:post_body]
+    post[:origin] = params[:origin]
+    post[:speech] = params[:speech]
+    post[:definition] = params[:definition]
 
-    redirect '/'
+    redirect '/words'
   end
 
-  delete "/:id" do
+  delete "/words/:id" do
     id = params[:id].to_i
     $posts.delete_at(id)
 
-    redirect "/"
+    redirect "/words"
 
   end
 
