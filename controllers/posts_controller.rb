@@ -64,7 +64,7 @@ class PostsController < Sinatra::Base
     erb :'posts/new'
   end
 
-  post "/words" do
+  post "/words/" do
     puts params
     new_post = {
       id: $posts.length,
