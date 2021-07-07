@@ -1,0 +1,11 @@
+<h1>Welcome to the homepage</h1>
+<h3>All the words</h3>
+<!-- ERB evaluate -->
+<% @post.each do |post| %>
+<div>
+  <h3><a href="/words/<%= post[:id] %>"><%= post[:title] %></a></h3>
+  <h4><%= post[:speech] %></h4>
+  <h4><%= post[:origin] %></h4>
+  <p><%= post[:definition] %></p>
+</div>
+<% end %>

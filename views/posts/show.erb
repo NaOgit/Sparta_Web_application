@@ -1,0 +1,9 @@
+<h1><%= @post[:title] %></h1>
+<h2><%= @post[:origin] %></h2>
+<h3><%= @post[:speech] %></h3>
+<p><%= @post[:definition] %></p>
+<a href="/words/<%= @post[:id] %>/edit">Edit</a>
+<form action="<%= @post[:id] %>" method="POST">
+  <input type="hidden" name="_method" value="DELETE">
+  <input type="submit" name="" value="Delete">
+</form>
